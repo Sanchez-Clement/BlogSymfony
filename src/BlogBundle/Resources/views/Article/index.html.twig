@@ -1,0 +1,27 @@
+{% extends "BlogBundle::layout.html.twig" %}
+
+{% block title %}
+Accueil - {{ parent() }}
+{% endblock %}
+
+{% block blog_body %}
+<h2> Les 3 derniers articles</h2>
+<div class="row">
+{% for article in articles %}
+<div class="card col-md-4" style="width: 20rem;">
+        <div class="card-body">
+          <h4 class="card-title">{{article.titre}}</h4>
+          <p class="card-text">{{article.content|slice(0, 50)}} <a class="btn btn-primary" href="{{ path('blog_view', {'id': article.id}) }}">Voir plus</a></p>
+          
+          <div class="card-footer text-muted">
+               {{article.author}} : {{article.date|date('d/m/Y')}}
+              </div>
+        </div>
+      </div>
+
+
+{% endfor %}
+</div>
+{% endblock blog_body  %}
+
+
