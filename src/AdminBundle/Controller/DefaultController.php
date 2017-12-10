@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route(
-     *     path = "/admin" ,
+     *     path = "/admin/" ,
      *     name = "admin_index")
      */
     public function indexAction()

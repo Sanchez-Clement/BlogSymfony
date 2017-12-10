@@ -28,9 +28,15 @@
               <li class="nav-item active mr-4">
                 <a class="nav-link btn btn-primary " href="{{ path('blog_index')}}">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item right">
-                <a class="nav-link btn btn-primary " href="{{ path('admin_index')}}">Admin</a>
-              </li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li class="nav-item active mr-4">
+                    <a href="{{ path('fos_user_security_logout') }}" class="nav-link btn btn-primary ">
+                        Logout
+                    </a></li>
+                {% else %}
+                    <li class="nav-item active mr-4">
+                    <a class="nav-link btn btn-primary " href="{{ path('fos_user_security_login') }}">Se connecter </a></li>
+                {% endif %}
               
                
               
@@ -41,10 +47,12 @@
 
   </header>
   <div class="container">
-    
-      
+
+
     
     {% block body %}
+
+
       
     {% endblock body %}
  
